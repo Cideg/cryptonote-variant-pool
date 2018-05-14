@@ -1,3 +1,4 @@
+# Cryptonote-variant-pool
 An updated cryptonote-sumokoin-pool fork
 ========================================
 
