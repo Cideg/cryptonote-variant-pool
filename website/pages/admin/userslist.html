@@ -12,7 +12,6 @@
 		<td data-sort="{{this.wallet.hashes}}">{{this.readableHashes}}</td>
 		<td data-sort="{{this.wallet.pending}}">{{this.readablePending}}</td>
 		<td data-sort="{{this.wallet.paid}}">{{this.readablePaid}}</td>
-		<td data-sort="{{this.wallet.payments}}">{{this.readablePayments}}</td>
 		<td data-sort="{{this.wallet.lastShare}}">{{this.timeago}}</td>
 	</tr>
 	{{/each}}
@@ -31,7 +30,6 @@
 					timeago: $.timeago(new Date(userData.lastShare * 1000).toISOString()),
 					readablePending: getReadableCoins(userData.pending),
 					readablePaid: getReadableCoins(userData.paid),
-					readablePayments: userData.payments,
 					readableHashrate: getReadableHashRateString(userData.hashrate) + '/s',
 					readableHashes: getReadableHashRateString(userData.hashes)
 				});
@@ -72,7 +70,6 @@
 			<th class="sort" style="width:10%;">Hashes <i class="fa fa-sort"></i></th>
 			<th class="sort" style="width:16%;">Pending <i class="fa fa-sort"></i></th>
 			<th class="sort" style="width:10%;">Paid <i class="fa fa-sort"></i></th>
-			<th class="sort" style="width:10%;">Payments <i class="fa fa-sort"></i></th>
 			<th class="sort" style="width:14%;">Last share <i class="fa fa-sort"></i></th>
 		</tr>
 		</thead>

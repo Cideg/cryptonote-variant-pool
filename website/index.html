@@ -5,26 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
-    <title>Sumokoin Mining Pool</title>
+    <title>Electronero Mining Pool</title>
 
-    <!-- favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.0/jquery.timeago.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
-
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="//fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
 
-    <script src="config.js"></script>
+    <script src="etnx.js"></script>
     <script src="custom.js"></script>
 
     <style>
-        @import url(//fonts.googleapis.com/css?family=Montserrat:400,700);
         #coinName{
             text-transform: capitalize;
         }
@@ -80,28 +77,9 @@
             text-align: center;
         }
 
-        .sumo-orange{
-            color: orange;
-        }
-
-        .navbar-header .navbar-brand {
-            text-transform: uppercase;
-            font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-            font-weight: 700;
-        }
-
-        .navbar-header .navbar-brand span{
-            font-size: 70%;
-            padding-left: 23px;
-        }
-
-        .navbar-header .navbar-brand:focus {
-            outline: 0;
-        }
-
     </style>
-
-    <link href="custom.css" rel="stylesheet">
+    
+    <link href="style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -144,7 +122,7 @@
     function getTransactionUrl(id) {
         return transactionExplorer.replace('{symbol}', lastStats.config.symbol.toLowerCase()).replace('{id}', id);
     }
-
+    
     $.fn.update = function(txt){
         var el = this[0];
         if (el.textContent !== txt)
@@ -184,7 +162,7 @@
     }
 
     function formatPaymentLink(hash){
-        return '<a target="explorer" href="' + getTransactionUrl(hash) + '">' + hash + '</a>';
+        return '<a target="_blank" href="' + getTransactionUrl(hash) + '">' + hash + '</a>';
     }
 
     function getPaymentRowElement(payment, jsonString){
@@ -278,24 +256,6 @@
         });
     }
 
-    function fetchHealthState() {
-        $.ajax({
-            url: api + '/health',
-            dataType: 'json',
-            cache: 'false'
-        }).done(function(data){
-            if (data.status == "OK") {
-	        $('#health_warning').hide(100);
-	    } else {
-	        $('#health_warning').show(100);
-            }
-        });
-    }
-    // Every 5 seconds check the health status.
-    setInterval(fetchHealthState, 5000);
-    fetchHealthState();
-
-
     function floatToString(float) {
         return float.toFixed(6).replace(/[0\.]+$/, '');
     }
@@ -330,7 +290,7 @@
     }
 
     function updateIndex(){
-        //updateText('coinName', lastStats.config.coin);
+        updateText('coinName', lastStats.config.coin);
         updateText('poolVersion', lastStats.config.version);
     }
 
@@ -340,7 +300,7 @@
 
     $(function(){
 		$("head").append("<link rel='stylesheet' href=" + themeCss + ">");
-
+		
         $.get(api + '/stats', function(data){
             lastStats = data;
             updateIndex();
@@ -360,52 +320,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="/">
-                <i class="fa fa-circle sumo-orange"></i> Sumokoin Pool
+            <a class="navbar-brand active" href="#">
+                <span> Electronero Mining Pool</span>
+                <!-- <img class="isotipo" src="img/isotipo-luka.svg" alt="Luka - Isotipo" />  -->
+                <!-- <img class="logotipo" src="img/logotipo-luka.svg" alt="Luka - Logotipo" />  -->
+                <span id="coinName" style="display:none!important"></span> 
+                <span class="divisor">|</span>
+                <span class="subtitle">Mining Pool</span>
+                <div id="stats_updated">Stats Updated &nbsp;<i class="fa fa-bolt"></i></div>
             </a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-
-                <li class="active"><a class="hot_link" data-page="home.html" href="#">
-                    <i class="fa fa-home"></i> Home
-                </a></li>
-
-                <li><a class="hot_link" data-page="pool_blocks.html" href="#pool_blocks">
-                    <i class="fa fa-cubes"></i> Pool Blocks
-                </a></li>
-
-                <li><a class="hot_link" data-page="payments.html" href="#payments">
-                    <i class="fa fa-paper-plane-o"></i> Payments
-                </a></li>
-
-                <li><a class="hot_link" data-page="worker_stats.html" href="#worker_stats">
-                    <i class="fa fa-tachometer"></i> Worker Stats
-                </a></li>
-
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-comments"></i> Support
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="hot_link" data-page="getting_started.html" href="#getting_started">
-                        <i class="fa fa-rocket"></i> Getting Started </a>
-                    </li>
-                    <li>
-                      <a class="hot_link" data-page="support.html" href="#support">
-                        <i class="fa fa-comments"></i> Contact </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li><a class="hot_link" data-page="settings.html" href="#settings">
-                    <i class="fa fa-cog"></i> Settings
-                </a></li>
-
-
+        <div class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav" data-toggle="collapse" data-target=".navbar-collapse">
+                <li class="active"><a class="hot_link" data-page="home.html" href="#">Home</a></li>
+                <li><a class="hot_link" data-page="getting_started.html" href="#getting_started">Mining</a></li>
+                <li><a class="hot_link" data-page="pool_blocks.html" href="#pool_blocks">Pool Blocks</a></li>
+                <li><a class="hot_link" data-page="payments.html" href="#payments">Payments</a></li>
+                <li><a class="hot_link" data-page="support.html" href="#support">Support</a></li>
             </ul>
-            <div id="stats_updated">Stats Updated &nbsp;<i class="fa fa-bolt"></i></div>
         </div>
 
     </div>
@@ -420,12 +352,8 @@
 </div>
 
 <footer>
-    <div id="health_warning">
-        This pool is not healthy! Contact the admin for support.
-    </div>
     <div class="text-muted">
-        Powered by <a target="_blank"
-          href="https://github.com/SadBatman/cryptonote-sumokoin-pool/"><i class="fa fa-github"></i> cryptonote-sumokoin-pool</a>
+        Powered by <a target="_blank" href="//cryptonotemining.org"><i class="fa fa-github"></i> cryptonote-universal-pool</a>
         <span id="poolVersion"></span>
         open sourced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>
     </div>
