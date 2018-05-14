@@ -1,7 +1,7 @@
 An updated cryptonote-sumokoin-pool fork
 ========================================
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, Sumokoin etc..
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Electronero, Monero, Bytecoin, QuazarCoin, Boolberry, Dashcoin, Sumokoin, Bloc, Electroneum etc..
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 ## Recent changes
@@ -79,7 +79,6 @@ individual worker.
 * Historic charts of users's hashrate and payments
 * Miner login(wallet address) validation
 * Five configurable CSS themes
-* Universal blocks and transactions explorer based on [chainradar.com](http://chainradar.com)
 * FantomCoin support is not currently working after fixes to get node modules to work after Mar 23, 2016 fork.
 * MonetaVerde support not tested since changes for monero fork
 * Set fixed difficulty on miner client by passing "address" param with ".[difficulty]" postfix
@@ -89,15 +88,15 @@ individual worker.
 
 ## Pools Using This Software
 
-* https://pool.sumokoin.com
-* https://pool.sumokoin.ch
+* http://pool.electronero.org
+* http://etnxpool.org
 
-More pools can be found on [sumopools.com](https://www.sumopools.com)
+More pools can be found on [electronero.org/pools](https://electronero.org/pools)
 
 ## Usage
 
 Visit the usage guide here.
-[Visit the usage guide here](https://github.com/SadBatman/cryptonote-sumokoin-pool/blob/master/USAGE.md)
+[Visit the usage guide here](https://github.com/electroneropool/cryptonote-variant-pool/blob/master/USAGE.md)
 
 
 ## License
