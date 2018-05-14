@@ -1,6 +1,6 @@
 {
     "name": "cryptonote-universal-pool",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "license": "GPL-2.0",
     "author": "Matthew Little",
     "repository": {
@@ -19,6 +19,6 @@
         "redis": "^2.8.0"
     },
     "engines": {
-        "node": ">=4.0"
+        "node": ">=8.0"
     }
 }
