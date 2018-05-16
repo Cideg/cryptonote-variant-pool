@@ -82,6 +82,15 @@
 <div id="siteInfo"></div>
 
 <div class="row">
+    <div align="center" id="status" class="col-sm-12 col-md-12 col-lg-12 stats net-stats">
+        <h3><span class="title-dash">Status</span></h3>
+        <div class="title-dash" align="center">
+            <h5>Operator Message:</h5>
+        <span name="poolStatus" id="poolStatus">
+        </span>
+        </div>
+    </div>
+
     <div class="col-md-12 stats net-stats">
         <h3><span class="title-dash">NETWORK</span></h3>
         <div>
@@ -363,6 +372,15 @@
             if (xhrGetPayments) xhrGetPayments.abort();
         },
         update: function(){
+            
+            
+            if(showStatus != true) {
+            document.getElementById("status").outerHTML = "";
+            }
+            else {
+                document.getElementById("status").style.visibility = "visible";
+                document.getElementById('poolStatus').innerHTML = poolStatus.toString();
+            }
 
             $('#networkLastBlockFound').timeago('update', new Date(lastStats.network.timestamp * 1000).toISOString());
             var lastNetworkHeight = lastStats.network.height.toString();
