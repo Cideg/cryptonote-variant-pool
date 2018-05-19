@@ -1,3 +1,6 @@
+oldssl/
+old-ssl/
+old_ssl/
 *.key
 *.pem
 ssl
