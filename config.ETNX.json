@@ -134,6 +134,11 @@
         "port": 8117,
         "blocks": 30,
         "payments": 30,
+        "ssl": true,
+        "sslport": 8119,
+        "sslcert": "./ssl/cert.pem",
+        "sslkey": "./ssl/privkey.pem",
+        "sslca": "./ssl/chain.pem",
         "password": "vsend_mynt",
         "trust_proxy_ip": false
     },
