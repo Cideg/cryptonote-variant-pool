@@ -24,25 +24,28 @@
         "minerTimeout": 900,
         "sslKey": "privkey.pem",
         "sslCert": "cert.pem",
+        "allowedMinerAddressPrefixes": [
+          "2864026", "536986"
+        ],
         "ports": [
             {
-                "port": 3333,
+                "port": 1111,
                 "difficulty": 25000,
                 "desc": "Low end hardware"
             },
             {
-                "port": 3334,
+                "port": 1112,
                 "difficulty": 25000,
                 "desc": "Low end hardware (SSL protected)",
                 "type": "SSL"
             },
             {
-                "port": 4444,
+                "port": 3333,
                 "difficulty": 250000,
                 "desc": "Mid range hardware"
             },
             {
-                "port": 4445,
+                "port": 3334,
                 "difficulty": 250000,
                 "desc": "Mid range hardware (SSL protected)",
                 "type": "SSL"
@@ -60,13 +63,13 @@
             },
             {
                 "port": 6666,
-                "difficulty": 200000,
+                "difficulty": 300,
                 "desc": "Hidden port",
                 "hidden": true
             },
             {
                 "port": 6667,
-                "difficulty": 200000,
+                "difficulty": 300,
                 "desc": "Hidden port (SSL protected)",
                 "hidden": true,
                 "type": "SSL"
@@ -101,25 +104,25 @@
 
     "payments": {
         "enabled": true,
-        "interval": 10800,
+        "interval": 240,
         "maxAddresses": 30,
         "mixin": 12,
-        "transferFee": 30,
-        "minPayment": 10000,
-        "maxTransactionAmount": 5000000,
+        "transferFee": 30000,
+        "minPayment": 1000000,
+        "maxTransactionAmount": 50000000,
         "denomination": 100,
         "useDynamicTransferFee": true,
-        "transferFeePerPayee": 30,
+        "transferFeePerPayee": 35000,
         "minerPayFee": true,
-        "blockReward": 36.45
+        "blockReward": 18905.60
     },
 
     "blockUnlocker": {
         "enabled": true,
-        "interval": 30,
-        "depth": 60,
+        "interval": 120,
+        "depth": 1,
         "poolFee": 20,
-        "devDonation": 0,
+        "devDonation": 5,
         "coreDevDonation": 0.1,
         "extraFeaturesDevDonation":0
     },
@@ -131,12 +134,17 @@
         "port": 8117,
         "blocks": 30,
         "payments": 30,
+        "ssl": true,
+        "sslport": 8129,
+        "sslcert": "cert.pem",
+        "sslkey": "privkey.pem",
+        "sslca": "chain.pem",
         "password": "vsend_mynt",
         "trust_proxy_ip": false
     },
 
     "daemon": {
-        "host": "127.0.0.1",
+        "host": "46.101.76.70",
         "port": 28888
     },
 
@@ -147,7 +155,7 @@
 
     "redis": {
         "host": "127.0.0.1",
-        "port": 6379
+        "port": 3678
     },
 
     "email": {
@@ -174,20 +182,20 @@
         "pool": {
             "hashrate": {
                 "enabled": true,
-                "updateInterval": 60,
-                "stepInterval": 1800,
+                "updateInterval": 600,
+                "stepInterval": 120,
                 "maximumPeriod": 86400
             },
             "workers": {
                 "enabled": true,
-                "updateInterval": 60,
-                "stepInterval": 1800,
+                "updateInterval": 600,
+                "stepInterval": 120,
                 "maximumPeriod": 86400
             },
             "difficulty": {
                 "enabled": true,
-                "updateInterval": 1800,
-                "stepInterval": 10800,
+                "updateInterval": 120,
+                "stepInterval": 120,
                 "maximumPeriod": 604800
             },
             "price": {
@@ -216,3 +224,4 @@
         }
     }
 }
+
